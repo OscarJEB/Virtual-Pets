@@ -6,43 +6,97 @@ class Pet():
         self.boredom = 3
         self.sleepiness = 3
         self.dead = False
-    def pretty_print(self):
-        print(f"Name: {self.name}")
-        print(f"Age: {self.age}")
-        print(f"Hunger: {self.hunger}")
-        print(f"Boredom: {self.boredom}")
-        print(f"Sleepiness: {self.sleepiness}")
-        print(f"Death? {self.dead}")
+        
+    def __str__(self):
+        string = f"""Name: {self.name}
+        Age: {self.age}
+        Hunger: {self.hunger}
+        Boredom: {self.boredom}
+        Sleepiness: {self.sleepiness}
+        Dead? {self.dead}
+        """
+        return string
 
-def feed(self):
-    #check if the pet is dead, if it is, return nothing
-    if self.dead:
-        return
-    #reduce hunger by 3 but not below zero
-    self.hunger = self.hunger - 3
-    if self.hunger < 0:
-        self.hunger = 0
+    def feed(self):
+        #check if the pet is dead, if it is, return nothing
+        if self.dead:
+            return
+        #reduce hunger by 3 but not below zero
+        self.hunger = self.hunger - 3
+        if self.hunger < 0:
+            self.hunger = 0
 
-def check_death(self):
-    if self.boredom >=10:
-        self.dead = True
+#sleep
+    def sleep(self):
+        #check if the pet is dead, if it is, return nothing
+        if self.dead:
+            return
+        #reduce sleepiness by 3 but not below zero
+        self.sleepiness = self.sleepiness - 3
+        if self.sleepiness < 0:
+            self.sleepiness = 0
+#play
+    def play(self):
+        #check if the pet is dead, if it is, return nothing
+        if self.dead:
+            return
+        #reduce boredom by 3 but not below zero
+        self.boredom = self.boredom - 3
+        if self.boredom < 0:
+            self.boredom = 0
 
-    if self.age >= randint(15,20):
-        self.dead = True
+#wait (increases age and hunger, boredom and sleepiness. must happen when another action happens.)
+    def wait(self):
+        #check if the pet is dead, if it is, return nothing
+        if self.dead:
+            return
+        #increase age by 1
+        self.age = self.age + 1
+        self.hunger = self.hunger + 1
+        self.boredom = self.boredom + 1
+        self.sleepiness = self.sleepiness + 1
 
-    if self.hunger >=10:
-        self.dead = True
+    def check_death(self):
+        if self.boredom >=10:
+            self.dead = True
 
-    if self.sleepiness >=10:
-        self.dead = True
+        if self.age >= randint(15,20):
+            self.dead = True
 
-def is_dead(self):
-    #just return the value stored in the dead attribute 
-    return self.dead
+        if self.hunger >=10:
+            self.dead = True
 
-pet1 = Pet("John Dog")
-pet1.pretty_print()
+        if self.sleepiness >=10:
+            self.dead = True
 
+    def is_dead(self):
+        #just return the value stored in the dead attribute 
+        return self.dead
+
+    if pet1.is_dead():
+
+    name = input("What do you want your pet to be called?")
+    pet = Pet(name)
+    print(pet)
+    action = input("What do you want to do with your pet? ")
+while action != "":
+if action == "feed":
+#feed the pet
+pet.feed()
+#make time pass
+pet.wait()
+#fill in the if statement for the rest of the actions with elifs
+if action == "play":
+#play
+if action == "sleep":
+#sleep, wait
+#wait
+else:
+print("You can only choose to feed, play, sleep or wait. ")
+print("-----------------------------------------------------")
+print(pet)
+print("-----------------------------------------------------")
+action = input("What do you want to do with your pet? ")
 ####----Task 1----####
 #Set up your pet with the following attributes:
 #name (make this mandatory), age (default:0), hunger (default: 5), boredom (default:3), sleepiness(default:3)
